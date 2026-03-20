@@ -57,29 +57,39 @@ const Resume = () => {
     <main className="!pt-0">
       <nav className="resume-nav">
         <Link to="/" className="back-button">
-          <img src="/icons/back.svg" alt="Back"  className="w-2.5 h-2.5"/>
-          <span className="text-gray-800 text-sm font-semibold">Back to HomePage</span>
+          <img src="/icons/back.svg" alt="Back" className="w-2.5 h-2.5" />
+          <span className="text-gray-800 text-sm font-semibold">
+            Back to HomePage
+          </span>
         </Link>
       </nav>
       <div className="flex flex-row w-full max-lg:flex-col-reverse">
         <section className="feedback-section  bg-[url('/images/bg-small.svg')] bg-cover h-[100vh] sticky top-0 items-center justify-center">
           {imageUrl && resumeUrl && (
-            <div className="fade-in duration-1000 gradient-border  max-sm:m-0 h-[90%] max-2xl:h-fit w-fit">
+            <div className="fade-in duration-1000 gradient-border w-full max-w-xl mx-auto p-2">
               <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
-                <img src={imageUrl} title="resume" className="w-full h-full object-contain rounded-2xl"/>
+                <img
+                  src={imageUrl}
+                  className="w-full h-auto max-h-[80vh] object-contain rounded-xl"
+                />
               </a>
             </div>
           )}
         </section>
         <section className="feedback-section">
           <h2 className="text-4xl text-black font-bold">Resume Review</h2>
-          {feedback?(
+          {feedback ? (
             <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
-              <Summary feedback={feedback}/>
-              <Ats score={feedback.ATS.score ||0 } suggestions={feedback.ATS.tips || []}></Ats>
-              <Details feedback={feedback}/>
+              <Summary feedback={feedback} />
+              <Ats
+                score={feedback.ATS.score || 0}
+                suggestions={feedback.ATS.tips || []}
+              ></Ats>
+              <Details feedback={feedback} />
             </div>
-          ):(<img src="/images/resume-scan-2.gif" className="w-full"/>)}
+          ) : (
+            <img src="/images/resume-scan-2.gif" className="w-full" />
+          )}
         </section>
       </div>
     </main>
